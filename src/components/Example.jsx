@@ -11,7 +11,8 @@ export default class Example extends React.Component {
         text: "",
         inputText: "",
         autorName: "",
-        numberAnswer: ""
+        numberAnswer: 0,
+        messageBox: []
       }
 
     click = () => {
@@ -25,28 +26,26 @@ export default class Example extends React.Component {
     }
 
     clickButton = (e) => {
-        this.setState({count: this.state.numberAnswer + 1});
+        this.setState({numberAnswer: this.state.numberAnswer + 1});
         console.log(this.state.numberAnswer);
         this.setState({inputText: this.state.inputText = this.state.text});
-        const textMessage = `<div class="textPush">${this.state.inputText}</div>`;
+        const textMessage = `<div class="textPush$">${this.state.inputText}</div>`;
         document.querySelector(".innerMessage").insertAdjacentHTML("beforeend", textMessage);
         this.setState({autorName: this.state.autorName = "undefined"})
         const autor = `<span>Autor text - ${this.state.autorName}</span>`;
         document.querySelector(".innerMessage").insertAdjacentHTML("beforeend", autor);
+        this.state.messageBox.push(this.state.text);
+        
     }
-/*
-    sendAutoMessage = () => {
-        const sendMessage = `<div>Answer robot</div>`;
-        document.querySelector(".textPush").insertAdjacentHTML("afterend", sendMessage);
-    }
-*/
+
     componentDidUpdate () {
-      const timeOut = setTimeout(
-        () => {
-            document.querySelector(".textPush").insertAdjacentHTML("afterend", `<div>Answer robot</div>`);
-              },
-              100
-              );
+        if(this.state.messageBox.length % 2) {
+            this.state.messageBox.push("robot");
+            return document.querySelector(".innerMessage").insertAdjacentHTML("beforeend", `<div>Answer robot</div>`);
+            
+        } else {
+            console.log(false);
+        };  
     }
 
     componentWillUnmount() {
