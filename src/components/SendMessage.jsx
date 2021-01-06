@@ -28,7 +28,6 @@ export default class SendMessage extends React.Component {
             <TextField value={this.state.message}
                        onChange={this.handleChange}
                        fullWidth={true}
-                       multiline={true} 
                        name={'message'}/>
             <FlatButton onClick={this.send}>Send message</FlatButton>
             </div>
