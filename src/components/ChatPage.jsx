@@ -13,7 +13,7 @@ export default class ChatPage extends React.Component {
 
 
     static propTypes = {
-        chatId: PropTypes.number,
+        chatId: PropTypes.number
     }
 
     static defaultProps = {
@@ -37,7 +37,7 @@ export default class ChatPage extends React.Component {
                 10
             );
         } else {
-            return console.log("Auto answer works!");
+            return;
         };
     }
     
@@ -45,7 +45,8 @@ export default class ChatPage extends React.Component {
 
     send = objMsg => {
         this.setState({messages: [...this.state.messages, objMsg]});
-        console.log(this.state.messages); 
+        setTimeout(() => console.log(this.state.messages),
+         1000);   
     }    
 
 
@@ -53,7 +54,7 @@ export default class ChatPage extends React.Component {
         return <>
             <h1>Number chat - {this.chatSelected()}</h1> 
             <MessageList messages={this.state.messages}/>
-            <SendMessage send={this.send}/>
+            <SendMessage send={this.send} chatId={this.props.chatId}/>
             </>
     }
 

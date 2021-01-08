@@ -5,7 +5,7 @@ import styles from "../styles/Message.js";
 export default class Message extends React.Component {
     static propTypes = {
         message: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired
+        author: PropTypes.string.isRequired,
     };
 
     render() {

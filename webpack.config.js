@@ -12,7 +12,7 @@ module.exports = {
     devServer: {
         contentBase: "./dist",
         historyApiFallback: {
-            index: "index.html"
+            index: "/index.html"
         },
     },
     module: {
@@ -41,8 +41,9 @@ module.exports = {
         })
     ],
     output: {
-        filename: "[name].bundle.js",
-        path: path.resolve(__dirname, "dist")
+        filename: "./[name].bundle.js",
+        path: path.resolve(__dirname, "dist"),
+        publicPath: '/'
     },
     resolve: {
         extensions: [".js", ".jsx"]

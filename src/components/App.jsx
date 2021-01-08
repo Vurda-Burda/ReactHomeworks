@@ -1,6 +1,6 @@
 import React from "react";
 
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
+//import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 
@@ -9,6 +9,7 @@ import Message from "./Message.jsx";
 import MessageList from "./MessageList.jsx";
 import SendMessage from "./SendMessage.jsx";
 import ChatPage from "./ChatPage";
+import Profile from "./Profile"; 
 
 import "../styles/App.css";
 export default class App extends React.Component {
@@ -17,10 +18,10 @@ export default class App extends React.Component {
         super(props);
 
         this.state = {
-            chatId: "",
             text: "",
             messages: [],
             timeOut: null,
+            textProfile: "This registration page"
         };
     }
 
@@ -44,23 +45,32 @@ export default class App extends React.Component {
                 10
             );
         } else {
-            return console.log("Auto answer works!");
+            return;
         };
+    }
+
+    hideNav = () => {
+        document.querySelector(".nav").style.display = "none";
+    }
+
+    showNav = () => {
+        document.querySelector(".nav").style.display = "flex";
     }
 
  
 
     send = objMsg => {
         this.setState({messages: [...this.state.messages, objMsg]});
-        console.log(this.state.messages);
-    
     }    
 
     render() {
-        return <MuiThemeProvider> 
-        <main className="main">  
+
+        return <main className="main">  
             <BrowserRouter>
-            <nav>
+            <header>
+                <Link className="profile" to="/Profile" onClick={this.hideNav}>Profile</Link>
+                </header>
+            <nav className="nav">
                <Link to="/chat/1">Chat №1</Link>
                <Link to="/chat/2">Chat №2</Link>
                <Link to="/chat/3">Chat №3</Link>
@@ -69,11 +79,15 @@ export default class App extends React.Component {
             <div className="chat">
             <Switch>
                 <Route exact path="/" component={ChatPage}/>
-                <Route path="/chat/:chatId" render={obj => <ChatPage chatId={obj.match.params.chatId}/>}/>
+                <Route path="/chat/:chatId" render={obj => <ChatPage chatId={Number(obj.match.params.chatId)}/>}/>
+                <Route path="/"><Profile textProfile={this.state.textProfile}/></Route>
             </Switch>
             </div>
+            <footer>
+                <Link className="back" to="" onClick={this.showNav}>Back</Link>
+            </footer>
             </BrowserRouter>
             </main>
-            </MuiThemeProvider>;
+            
     }
 };

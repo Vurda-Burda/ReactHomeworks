@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import Message from "./Message.jsx";
 
 import "../styles/MessageList.css"
-
 export default class MessageList extends React.Component {
     static propTypes = {
-        messages: PropTypes.array
+        messages: PropTypes.array,
+        chatId: PropTypes.number 
     };
 
     static defaultProps = {
@@ -14,8 +14,8 @@ export default class MessageList extends React.Component {
     };
     
     render() {
-        return <div iv className={"messages"}>
-            { this.props.messages.map(({message, author}, id) => <><Message message={message} author={author} key={id}/><br/></>) }
+        return <div className={"messages"}>
+            { this.props.messages.map(({message, author, chatId}, index) => <React.Fragment key={index}><Message message={message} author={author} chatId={chatId}/><br/></React.Fragment>) }
         </div>;
     };
 };
