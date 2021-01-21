@@ -83,7 +83,7 @@ export default class App extends React.Component {
                <Link to="/chat/3">Chat №3</Link>
                <Link to="/chat/4">Chat №4</Link> 
             </nav> */}
-            <LinkChats/>
+            <LinkChats linkChats={this.state.linkChats}/>
             <div className="chat">
             <Router/>
             </div>
