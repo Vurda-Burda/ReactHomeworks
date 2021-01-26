@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
 import {linkChats} from "./actions/linkChatsAction";
-import {testText} from "./actions/testActions";
 
 import "../styles/App.css";
 
@@ -27,11 +26,10 @@ class LinkChats extends React.Component {
     
 
     inputValueNumber = (e) => {
-        this.newChatNumber = e.target.value;       
+        return this.newChatNumber = e.target.value;       
     }
 
     addNewChat = () => {
-        console.log(mapStateToProps);
     
         if (this.props.linkChatsStore.includes(Number(this.newChatNumber))) {
             alert("Такой чат уже существует!!!");
@@ -41,7 +39,7 @@ class LinkChats extends React.Component {
             console.log("incorrect value chat number");
         } else {
             this.props.linkChatsStore.push(Number(this.newChatNumber));
-            this.setState({newChatNumber: this.newChatNumber}, () => console.log(this.props.linkChats));
+            this.setState({newChatNumber: this.newChatNumber}, () => console.log(this.props.linkChatsStore));
         };
     }
 

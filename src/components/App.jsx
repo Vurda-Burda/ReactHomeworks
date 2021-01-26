@@ -21,13 +21,13 @@ export default class App extends React.Component {
             text: "",
             messages: [],
             timeOut: null,
-            textProfile: "This registration page",
-            linkChats: [
-                1,
-                2,
-                3,
-                4
-            ]
+            textProfile: "This registration page"
+            // linkChats: [
+            //     1,
+            //     2,
+            //     3,
+            //     4
+            // ]
         };
     }
 
@@ -42,18 +42,18 @@ export default class App extends React.Component {
         this.setState({timeOut});
     }
 
-    componentDidUpdate(){
-        if(this.state.messages.length % 2 && this.state.messages[this.state.messages.length-1].author === "me"){
-            const timeout = setTimeout(
-                () => {
-                    this.setState({messages: [...this.state.messages, {message: 'I do not answer you. I am robot', author: 'robot'}]});
-                },
-                10
-            );
-        } else {
-            return;
-        };
-    }
+    // componentDidUpdate(){
+    //     if(this.state.messages.length % 2 && this.state.messages[this.state.messages.length-1].author === "me"){
+    //         const timeout = setTimeout(
+    //             () => {
+    //                 this.setState({messages: [...this.state.messages, {message: 'I do not answer you. I am robot', author: 'robot'}]});
+    //             },
+    //             10
+    //         );
+    //     } else {
+    //         return;
+    //     };
+    // }
 
     hideNav = () => {
         document.querySelector(".nav").style.display = "none";
@@ -66,7 +66,7 @@ export default class App extends React.Component {
  
 
     send = objMsg => {
-        this.setState({messages: [...this.state.messages, objMsg]});
+        this.setState({messages: [...this.state.messages, objMsg]}, () => console.log(this.state.messages));
     }    
 
     render() {
