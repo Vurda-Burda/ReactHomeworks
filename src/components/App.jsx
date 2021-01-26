@@ -76,16 +76,10 @@ export default class App extends React.Component {
             <BrowserRouter>
             <header>
                 <Link className="profile" to="/Profile" onClick={this.hideNav}>Profile</Link>
-                </header>
-            {/* <nav className="nav">
-               <Link to="/chat/1">Chat №1</Link>
-               <Link to="/chat/2">Chat №2</Link>
-               <Link to="/chat/3">Chat №3</Link>
-               <Link to="/chat/4">Chat №4</Link> 
-            </nav> */}
-            <LinkChats linkChats={this.state.linkChats}/>
+            </header>
+                <LinkChats linkChats={this.state.linkChats}/>
             <div className="chat">
-            <Router/>
+                <Router/>
             </div>
             <footer>
                 <Link className="back" to="" onClick={this.showNav}>Back</Link>
