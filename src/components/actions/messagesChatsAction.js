@@ -1,6 +1,8 @@
 export const MESSAGES_CHATS = "MESSAGES_CHATS";
 
-export const messagesChats = (array) => ({
+export const messagesChats = (message, author, chatId) => ({
     type: MESSAGES_CHATS,
-    array
+    message,
+    author,
+    chatId
 });

@@ -52,7 +52,9 @@ class ChatPage extends React.Component {
         //  () => {
         //     this.setState({messages: [...this.state.messages, {message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId}]});
         // });
-        console.log(this.props.messagesChatsStore);
+        console.log(messagesChats);
+
+        this.setState({});
         // this.setState({messages: ""});
 
         // setTimeout(() => console.log(this.state.messages),

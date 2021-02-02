@@ -1,10 +1,12 @@
 import {MESSAGES_CHATS} from "../actions/messagesChatsAction";
 
 const innitialStore = {
-    messages: []
+    messages: [
+        {message: "dwd", author: "me", chatId: 0}
+    ]
 };
 
-export default function messagesChatsReducer (store = innitialStore , action) {
+export default function messagesChatsReducer (store = innitialStore , action) {  
     switch(action.type) {
         case MESSAGES_CHATS:
             return action.messages;
