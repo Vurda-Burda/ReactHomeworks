@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
-import {testText} from "./actions/testActions";
+import {testText} from "./store/actions/testActions";
 
 
 class Profile extends React.Component {

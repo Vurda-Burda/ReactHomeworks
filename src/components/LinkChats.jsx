@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import {connect} from "react-redux";
-import {linkChats} from "./actions/linkChatsAction";
+import {linkChats} from "./store/actions/linkChatsAction";
 
 import "../styles/App.css";
 

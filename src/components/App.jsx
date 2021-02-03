@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import {ConnectedRouter} from "connected-react-router";
 import Example from "./Example.jsx";
 import Message from "./Message.jsx";
 import MessageList from "./MessageList.jsx";
@@ -8,7 +9,7 @@ import ChatPage from "./ChatPage";
 import Profile from "./Profile"; 
 import Router from "./Router"
 import { Provider } from 'react-redux';
-import initStore from "./store/store";
+import initStore, {history} from "./store/store";
 import LinkChats from "./LinkChats";
 
 import "../styles/App.css";
@@ -73,7 +74,7 @@ export default class App extends React.Component {
 
         return  <main className="main">
             <Provider store={initStore()}>   
-            <BrowserRouter>
+            <ConnectedRouter history={history}>
             <header>
                 <Link className="profile" to="/Profile" onClick={this.hideNav}>Profile</Link>
             </header>
@@ -84,7 +85,7 @@ export default class App extends React.Component {
             <footer>
                 <Link className="back" to="" onClick={this.showNav}>Back</Link>
             </footer>
-            </BrowserRouter>
+            </ConnectedRouter>
             </Provider>
             </main>
             

@@ -5,7 +5,7 @@ import MessageList from "./MessageList";
 import SendMessage from "./SendMessage";
 
 import {connect} from "react-redux";
-import {messagesChats} from "./actions/messagesChatsAction";
+import {messagesChats} from "./store/actions/messagesChatsAction";
 
 
 class ChatPage extends React.Component {
@@ -31,42 +31,12 @@ class ChatPage extends React.Component {
         };
     }
 
-    // componentDidUpdate(prevProps, prevState){
-    //     if(prevState.messages.length < this.state.messages.length && this.state.messages[this.state.messages.length-1].author === "me"){
-    //         const timeout = setTimeout(
-    //             () => {
-    //                 this.setState({messages: [...this.state.messages, {message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId}]});
-    //             },
-    //             10
-    //         );
-    //     } else {
-    //         return;
-    //     };
-    // }
-    
-
-
     send = objMsg => {
         this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)}, () => this.setState( () => this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})));
-        // this.setState({messages: [...this.state.messages, objMsg]},
-        //  () => {
-        //     this.setState({messages: [...this.state.messages, {message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId}]});
-        // });
-        console.log(messagesChats);
-
-        this.setState({});
-        // this.setState({messages: ""});
-
-        // setTimeout(() => console.log(this.state.messages),
-        //  1000);
-        
-        // const b = this.props.chatId;
-
-        // const c = this.state.messages.filter((e) => e.chatId === b);
-        // setTimeout(() =>console.log(c),
-        // );
-
+     
     } 
+    
+
     
     render() {
 
@@ -86,7 +56,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = {
-    messagesChats: messagesChats,
+    messagesChats: messagesChats
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);
