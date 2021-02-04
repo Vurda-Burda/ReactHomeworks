@@ -5,7 +5,7 @@ const innitialStore = {
     ]
 };
 
-export default function messagesChatsReducer (store = innitialStore , action) { 
+export default function messagesChatsReducer (store = innitialStore.messages , action) { 
     console.log("message - work"); 
     switch(action.type) {
         case MESSAGES_CHATS:

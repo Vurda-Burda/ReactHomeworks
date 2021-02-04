@@ -33,7 +33,7 @@ class ChatPage extends React.Component {
 
     send = objMsg => {
         this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)}, () => this.setState( () => this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})));
-     
+        console.log(this.props.messagesChatsStore);
     } 
     
 
@@ -52,11 +52,11 @@ class ChatPage extends React.Component {
 
 };
 const mapStateToProps = store => ({  
-    messagesChatsStore: store.messagesChatsReducer.messages
+    messagesChatsStore: store.messagesChatsReducer
 });
 
-const mapDispatchToProps = {
+const mapDispatchToProps = dispath => ({
     messagesChats: messagesChats
-};
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ChatPage);

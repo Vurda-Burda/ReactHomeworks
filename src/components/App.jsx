@@ -12,6 +12,10 @@ import { Provider } from 'react-redux';
 import initStore, {history} from "./store/store";
 import LinkChats from "./LinkChats";
 
+import { PersistGate } from 'redux-persist/integration/react';
+
+const { store, persistor } = initStore();
+
 import "../styles/App.css";
 export default class App extends React.Component {
 
@@ -23,25 +27,19 @@ export default class App extends React.Component {
             messages: [],
             timeOut: null,
             textProfile: "This registration page"
-            // linkChats: [
-            //     1,
-            //     2,
-            //     3,
-            //     4
-            // ]
         };
     }
 
-    componentDidMount() {
-        console.log("componentDidMount");
-        const timeOut = setTimeout(
-            () => {
-                this.setState({text: "Hello World!"});
-                  },
-                  2000
-        );
-        this.setState({timeOut});
-    }
+    // componentDidMount() {
+    //     console.log("componentDidMount");
+    //     const timeOut = setTimeout(
+    //         () => {
+    //             this.setState({text: "Hello World!"});
+    //               },
+    //               2000
+    //     );
+    //     this.setState({timeOut});
+    // }
 
     // componentDidUpdate(){
     //     if(this.state.messages.length % 2 && this.state.messages[this.state.messages.length-1].author === "me"){
@@ -73,7 +71,8 @@ export default class App extends React.Component {
     render() {
 
         return  <main className="main">
-            <Provider store={initStore()}>   
+            <Provider store={store}>
+            <PersistGate loading={null} persistor={persistor}>   
             <ConnectedRouter history={history}>
             <header>
                 <Link className="profile" to="/Profile" onClick={this.hideNav}>Profile</Link>
@@ -86,6 +85,7 @@ export default class App extends React.Component {
                 <Link className="back" to="" onClick={this.showNav}>Back</Link>
             </footer>
             </ConnectedRouter>
+            </PersistGate>
             </Provider>
             </main>
             
