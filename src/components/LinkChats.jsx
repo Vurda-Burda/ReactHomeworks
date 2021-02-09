@@ -44,7 +44,7 @@ class LinkChats extends React.Component {
     }
 
     render () {
-        const drawLinkChats = this.props.linkChatsStore.map((chatNumber) => <Link key={chatNumber} to={`/chat/${chatNumber}`}>Chat №{chatNumber}</Link>);
+        const drawLinkChats = this.props.linkChatsStore.map((chatNumber) => <Link className={`${chatNumber}`} key={chatNumber} to={`/chat/${chatNumber}`}>Chat №{chatNumber}</Link>);
 
         return <nav className="nav">
             {drawLinkChats}

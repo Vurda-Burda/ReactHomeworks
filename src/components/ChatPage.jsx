@@ -31,10 +31,18 @@ class ChatPage extends React.Component {
         };
     }
 
-    blinkChatsAnswer = () => {
-        document.querySelector("h1").classList.toggle("blinkChats");
-        setTimeout(()=> document.querySelector("h1").classList.toggle("blinkChats"),
-         3000);
+       blinkChatsAnswer = () => {
+        document.querySelectorAll("a").forEach((i) => {
+            if (i.className == this.props.chatId) {
+                i.classList.add("blinkChats");
+                setTimeout(() => i.classList.remove("blinkChats"),
+                7000)
+               }
+        }
+        );
+        // document.querySelector("h1").classList.toggle("blinkChats");
+        // setTimeout(() => document.querySelector("h1").classList.toggle("blinkChats"),
+        //  3000);
     }
 
     send = objMsg => {
