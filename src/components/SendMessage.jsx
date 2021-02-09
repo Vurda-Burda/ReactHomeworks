@@ -3,7 +3,11 @@ import PropTypes from "prop-types";
 
 import { TextField } from '@material-ui/core';
 import  { Button } from "@material-ui/core";
-export default class SendMessage extends React.Component {
+
+import {connect} from "react-redux";
+import {testText} from "./store/actions/testActions";
+
+class SendMessage extends React.Component {
     state = {
         message: "",
         chatNumber: ""
@@ -16,7 +20,7 @@ export default class SendMessage extends React.Component {
 
 
     send = () => {
-        this.props.send({message: this.state.message, author: 'me', chatId: this.props.chatId});
+        this.props.send({message: this.state.message, author: this.props.textStore, chatId: this.props.chatId});
         this.setState({message: ""});
     };
 
@@ -35,3 +39,13 @@ export default class SendMessage extends React.Component {
     };
 
 };
+
+const mapStateToProps = store => ({
+    textStore: store.textReducer.text
+});
+
+const mapDispatchToProps = {
+    testText: testText
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SendMessage);

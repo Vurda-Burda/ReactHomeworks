@@ -5,6 +5,7 @@ export default store => next => action => {
     const messages = store.getState().messagesChatsReducer;
     switch(action.type){
         case MESSAGES_CHATS:
+            console.log(1);
             if(action.author === 'me'){
                 console.log('need send');
                 setTimeout(
@@ -14,5 +15,6 @@ export default store => next => action => {
             }
             break;
     }
+    console.log(2);
     return next(action);
 };

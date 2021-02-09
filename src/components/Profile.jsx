@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {testText} from "./store/actions/testActions";
 
-
 class Profile extends React.Component {
 
     state = {
@@ -24,10 +23,24 @@ class Profile extends React.Component {
         this.setState({});
     }
 
+    // aaa = () => {
+    //     let fs = require("fs");
+    //     fs.readFileSync("../../dist/api/authorProfile.json");
+    //     console.log(fs);
+    // }
 
 
 
-   
+    componentDidMount () {
+        fetch('/api/authorProfile.json')
+        .then(response => response.json())
+        .then(json_data => {console.log(json_data.text)
+            this.props.textStore.text =  json_data.text;
+            this.setState({});
+        });
+    }
+
+
     render () {
         return <div>
             <h1 style={{width: "100%", display: "block", margin: "40%", fontSize: "40px"}}>{this.props.textStore.text}</h1>

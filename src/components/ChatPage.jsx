@@ -31,7 +31,7 @@ class ChatPage extends React.Component {
         };
     }
 
-       blinkChatsAnswer = () => {
+    blinkChatsAnswer = () => {
         document.querySelectorAll("a").forEach((i) => {
             if (i.className == this.props.chatId) {
                 i.classList.add("blinkChats");
@@ -47,8 +47,8 @@ class ChatPage extends React.Component {
 
     send = objMsg => {
         this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)},
-        () => this.setState({messagesChatsStore: this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})},
-        ()=> this.blinkChatsAnswer()));
+        () => setTimeout(() => this.setState({messagesChatsStore: this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})},
+        ()=> this.blinkChatsAnswer()), 2000));
         console.log(this.props.messagesChatsStore);
     } 
 

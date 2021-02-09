@@ -1,7 +1,7 @@
 import {TEST_TEXT} from "../actions/testActions";
 
 const innitialStore = {
-    text: "This registration page!",
+    text: "no name",
 };
 
 export default function textReducer (store = innitialStore , action) {
