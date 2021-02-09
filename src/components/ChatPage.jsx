@@ -31,11 +31,18 @@ class ChatPage extends React.Component {
         };
     }
 
+    blinkChatsAnswer = () => {
+        document.querySelector("h1").classList.toggle("blinkChats");
+        setTimeout(()=> document.querySelector("h1").classList.toggle("blinkChats"),
+         3000);
+    }
+
     send = objMsg => {
-        this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)}, () => this.setState( () => this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})));
+        this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)},
+        () => this.setState({messagesChatsStore: this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})},
+        ()=> this.blinkChatsAnswer()));
         console.log(this.props.messagesChatsStore);
     } 
-    
 
     
     render() {
