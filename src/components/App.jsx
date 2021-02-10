@@ -1,22 +1,25 @@
 import React from "react";
 import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
 import {ConnectedRouter} from "connected-react-router";
+
 import Example from "./Example.jsx";
 import Message from "./Message.jsx";
 import MessageList from "./MessageList.jsx";
 import SendMessage from "./SendMessage.jsx";
 import ChatPage from "./ChatPage";
-import Profile from "./Profile"; 
+import Profile from "./Profile";
+import IPhoneInstallRequest from "./IPhoneInstallRequest ";
+import PushNotification from "./PushNotification"; 
+
 import Router from "./Router"
 import { Provider } from 'react-redux';
 import initStore, {history} from "./store/store";
 import LinkChats from "./LinkChats";
-
 import { PersistGate } from 'redux-persist/integration/react';
 
-const { store, persistor } = initStore();
-
 import "../styles/App.css";
+
+const { store, persistor } = initStore();
 export default class App extends React.Component {
 
     constructor(props) {
@@ -72,22 +75,24 @@ export default class App extends React.Component {
 
         return  <main className="main">
             <Provider store={store}>
+            {/* <PushNotification/> */}
             <PersistGate loading={null} persistor={persistor}>   
             <ConnectedRouter history={history}>
             <header>
                 <Link className="profile" to="/Profile" onClick={this.hideNav}>Profile</Link>
+                <PushNotification/>
             </header>
                 <LinkChats linkChats={this.state.linkChats}/>
             <div className="chat">
                 <Router/>
             </div>
             <footer>
+                <IPhoneInstallRequest/>
                 <Link className="back" to="" onClick={this.showNav}>Back</Link>
             </footer>
             </ConnectedRouter>
             </PersistGate>
             </Provider>
-            </main>
-            
+            </main>      
     }
 };

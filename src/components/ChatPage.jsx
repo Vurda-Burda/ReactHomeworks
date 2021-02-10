@@ -48,7 +48,7 @@ class ChatPage extends React.Component {
     send = objMsg => {
         this.setState({messagesChatsStore:  this.props.messagesChatsStore.push(objMsg)},
         () => setTimeout(() => this.setState({messagesChatsStore: this.props.messagesChatsStore.push({message: 'I do not answer you. I am robot', author: 'robot', chatId: this.props.chatId})},
-        ()=> this.blinkChatsAnswer()), 2000));
+        ()=> this.blinkChatsAnswer()), 1000));
         console.log(this.props.messagesChatsStore);
     } 
 

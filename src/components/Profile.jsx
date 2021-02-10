@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {testText} from "./store/actions/testActions";
 
+import "../styles/App.css";
+
 class Profile extends React.Component {
 
     state = {
@@ -43,7 +45,7 @@ class Profile extends React.Component {
 
     render () {
         return <div>
-            <h1 style={{width: "100%", display: "block", margin: "40%", fontSize: "40px"}}>{this.props.textStore.text}</h1>
+            <h1 style={{width: "100%", display: "block", margin: "40%", fontSize: "40px"}}>Author:{this.props.textStore.text}</h1>
             <input type="text" onChange={this.inputValueName}/>
             <button onClick={this.addAuthorNameNessage}>Enter your name</button>
         </div>
